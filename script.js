@@ -3,7 +3,7 @@ let computerScore = 0;
 
 const roundMessage = document.getElementById("round-message");
 const scoreTracker = document.getElementById("score-tracker");
-const winnerAnnouncment = document.getElementById("winner-announcment");
+const winnerAnnouncement = document.getElementById("winner-announcement");
 
 function getComputerChoice() {
   const choice = Math.floor(Math.random() * 3);
@@ -26,11 +26,11 @@ function getComputerChoice() {
 
 function checkWinner() {
   if (humanScore === 5) {
-    winnerAnnouncment.textContent = "Congratulations! you won the game";
-    winnerAnnouncment.style.color = "green";
+    winnerAnnouncement.textContent = "Congratulations! you won the game";
+    winnerAnnouncement.style.color = "green";
   } else if (computerScore === 5) {
-    winnerAnnouncment.textContent = "Game over! the computer won";
-    winnerAnnouncment.style.color = "red";
+    winnerAnnouncement.textContent = "Game over! the computer won";
+    winnerAnnouncement.style.color = "red";
   }
 }
 
@@ -60,6 +60,17 @@ function playRound(humanChoice) {
   checkWinner();
 }
 
+function reset() {
+  humanScore = 0;
+  computerScore = 0;
+
+  roundMessage.textContent = "Choose your weapon to start";
+  scoreTracker.textContent = "Human: 0 | Computer: 0";
+
+  winnerAnnouncement.textContent = "";
+  winnerAnnouncement.style.color = "";
+}
+
 document.getElementById("rock").addEventListener("click", function () {
   playRound("rock");
 });
@@ -70,4 +81,8 @@ document.getElementById("paper").addEventListener("click", function () {
 
 document.getElementById("scissors").addEventListener("click", function () {
   playRound("scissors");
+});
+
+document.getElementById("reset").addEventListener("click", function () {
+  reset();
 });
