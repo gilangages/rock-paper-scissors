@@ -32,6 +32,10 @@ function playGame() {
 
   // compare human and computer choice
   function playRound(humanChoice, computerChoice) {
+    if (!humanChoice) {
+      console.log("no input detected, skipped round");
+      return;
+    }
     const human = humanChoice.toLowerCase();
 
     if (human === computerChoice) {
